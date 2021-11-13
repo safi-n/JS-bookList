@@ -59,7 +59,7 @@ UI.prototype.clearFields = function () {
 }
 
 
-// ------------------ add book
+// --------------------------------------   EventListener for add book
 document.getElementById('book-form').addEventListener('submit', function (e) {
 
   // get the value of the field
@@ -83,11 +83,11 @@ document.getElementById('book-form').addEventListener('submit', function (e) {
     ui.clearFields();
     ui.showAlert('Book added!', 'success')
   }
-
+``
   e.preventDefault();
 });
 
-// -------------------- Remove book
+// -------------------------------------   EventListener for Remove book
 document.getElementById('book-list').addEventListener('click', function(e) {
   // initiate UI
   const ui = new UI();
