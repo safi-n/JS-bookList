@@ -4,10 +4,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
     integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>Book List</title>
+
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic" rel="stylesheet" />
 
   <style>
@@ -29,26 +31,27 @@
     }
   </style>
 </head>
+
 <body>
 <div class="container">
   <h1 style="font-size: 3.5rem; margin-top: 30px;">Book List</h1>
   <p style="font-size: 1.5rem;">Please fill out the form to add a book to your store.</p>
 
-  <form id="form-book">
+  <form id="book-form">
     <div>
-      <label for="title" style="font-size: 1.4rem; font-weight:500;">Title</label>
+      <label for="title">Title</label>
       <input type="text" id="title" class="u-full-width">
     </div>
     <div>
-      <label for="author" style="font-size: 1.4rem; font-weight:500;">author</label>
+      <label for="author">author</label>
       <input type="text" id="author" class="u-full-width">
     </div>
     <div>
-      <label for="isbn" style="font-size: 1.4rem; font-weight:500;">ISBN#</label>
+      <label for="isbn">ISBN#</label>
       <input type="text" id="isbn" class="u-full-width">
     </div>
     <div>
-      <input type="button" value="Submit" class="u-full-width">
+      <input type="submit" value="submit" class="u-full-width">
     </div>
   </form>
 
@@ -64,7 +67,7 @@
     <tbody id="book-list"></tbody>
   </table>
 </div>
-
-  <script src="./app.js"></script>
+<script src="./app.js"></script>
+<script src="./es6.js"></script>
 </body>
 </html>
