@@ -73,22 +73,36 @@ class Store{
   }
 
   static LSdisplay() {
-    const books = Store.LSgetBooks(book);
-    books.forEach(book => {
-      localStorage.getItem('book')
+    const books = Store.LSgetBooks();
+    books.forEach(function(book) {
+      const ui = new UI;
+
+      // add books to list
+      ui.addBook(book);
     });
   }
 
   static LSaddBook(book) {
-    const books = Store.LSgetBooks(book);
+    const books = Store.LSgetBooks();
     books.push(book);
     localStorage.setItem('books', JSON.stringify(books));
   }
 
-  static LSremoveBooks() {
+  static LSremoveBooks(isbn) {
+    const books = Store.LSgetBooks();
+    books.forEach(function (book, index) {
+      if (book.isbn === isbn) {
+        books.splice(index, 1)
+      }
+    });
+    localStorage.setItem('books', JSON.stringify(books));
 
   }
 }
+
+// --------------------------------------  DOM Event listener
+document.addEventListener('DOMContentLoaded', Store.LSdisplay);
+
 
 // --------------------------------------   EventListener for add book
 document.getElementById('book-form').addEventListener('submit', function (e) {
@@ -127,6 +141,9 @@ document.getElementById('book-list').addEventListener('click', function (e) {
   const ui = new UI();
 
   ui.removeBook(e.target);
+
+  // remove from LS
+  Store.LSremoveBooks(e.target.parentElement.previousElementSibling.textContent)
   ui.showAlert('Book deleted', 'success')
   e.preventDefault();
 });
