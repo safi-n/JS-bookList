@@ -60,27 +60,61 @@ class UI{
 }
 
 
+// Class Store in LS
+class Store{
+  static LSgetBooks(book){
+    let books;
+    if (localStorage.getItem('books') === null) {
+      books = [];
+    } else {
+      books = JSON.parse(localStorage.getItem('books'))
+    }
+    return books;
+  }
+
+  static LSdisplay() {
+    const books = Store.LSgetBooks(book);
+    books.forEach(book => {
+      localStorage.getItem('book')
+    });
+  }
+
+  static LSaddBook(book) {
+    const books = Store.LSgetBooks(book);
+    books.push(book);
+    localStorage.setItem('books', JSON.stringify(books));
+  }
+
+  static LSremoveBooks() {
+
+  }
+}
+
 // --------------------------------------   EventListener for add book
 document.getElementById('book-form').addEventListener('submit', function (e) {
   // get the value of the field
-  const title = document.getElementById('title').value,
-    author = document.getElementById('author').value,
-    isbn = document.getElementById('isbn').value;
+  const title =  document.getElementById('title').value,
+        author = document.getElementById('author').value,
+        isbn =   document.getElementById('isbn').value;
 
   // initiate book
-  const book = new Book(title, author, isbn);
+  const book =   new Book(title, author, isbn);
 
   // validation of the fields
   if (title === '' || author === '' || isbn === '') {
     // initiate UI
-    const ui = new UI();
+    const ui =   new UI();
     ui.showAlert('Please fill out all the fields', 'error')
   } else {
     // initiate UI
-    const ui = new UI();
+    const ui =   new UI();
     // add book to the UI
     ui.addBook(book);
     // Clear fileds after submiting
+
+    // store book in LS
+    Store.LSaddBook(book);
+
     ui.showAlert('Book added!', 'success')
     ui.clearFields();
   }
